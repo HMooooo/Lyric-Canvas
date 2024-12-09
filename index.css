@@ -1,0 +1,381 @@
+body {
+    position: relative;
+    background-color : #A1CCD1;
+}
+
+
+canvas {
+    position: absolute;
+	margin-right: 20px;
+    width: 70vw;
+    height: 80%;
+    z-index: 6;
+}
+
+#backGroundSpace {
+    margin-left: 0;
+    position: absolute;
+    background-color: white;
+    width: 74vw;
+    height: 85%;
+    z-index: 1;
+}
+
+#seekbar {
+    width: 74.3vw;
+    height: 10px;
+    margin : 1em;
+    border-radius: 5px;
+    background: linear-gradient(#ccc, #ccc) no-repeat #eee;
+    z-index: 1;
+}
+
+#seekbar>div {
+    width: 0px;
+    height: 100%;
+    background: rgba(0, 255, 221, 0.8);
+    z-index: 10;
+}
+
+#buttonSpace {
+    margin-top: 80vh;
+    margin-left: -18px;
+    width: 74vw;
+    height: 10vh;
+    position: absolute;
+    z-index: 4;
+}
+
+#textDisplaySpace {
+    width: 74vw;
+    height: 80%;
+    position: absolute;
+    z-index: 4;
+}
+
+.text {
+    animation-name: blurAnime;
+    animation-duration: 3s;
+    font-size: 40px;
+    position: absolute;
+    opacity: 0;
+    font-family: "Dela Gothic One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@keyframes anime {
+    0% {
+        opacity: 1;
+    }
+
+    66% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes blurAnime {
+    0% {
+            filter: blur(10px);
+            transform: scale(1.02);
+            opacity: 0;
+        }
+    
+        20% {
+            filter: blur(0);
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        50% {
+            filter: blur(0);
+            transform: scale(1);
+            opacity: 1;
+        }
+
+    100% {
+        filter: blur(10px);
+        opacity: 0;
+    }
+}
+
+/* スライドインのアニメーション定義 */
+@keyframes slide-in {
+    0% {
+        transform: translateX(50%); /* 右からスライドイン */
+        opacity: 0;
+    }
+
+    20% {
+        transform: translateX(0); /* 元の位置に */
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(0); /* 元の位置に */
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-50%); /* 元の位置に */
+        opacity: 0;
+    }
+}
+
+@keyframes rotateIn {
+    0% {
+        opacity: 0;
+        transform: rotate(-150deg);
+    }
+    20% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(150deg);
+    }
+}
+
+@keyframes flicker {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+#play, #pause {
+    position: absolute;
+    margin-left: 90%;
+    margin-top: 12px;
+    margin-bottom: 20px;
+	padding-left: 4px;
+    background-color: white;
+    width: 60px;
+    height:60px;
+    color:rgba(0, 177, 153, 0.8);
+    font-size: 50px;
+    border-color: rgba(0, 177, 153, 0.8);
+    border-radius:50%;
+}
+#play:hover{
+    background: rgb(240, 235, 235); /* 少し濃い緑色 */
+}
+#musicName{
+    margin-left: 2vw;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#songWriter {
+    margin-left: 2vw;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#loading {
+    position: absolute;
+    font-size: 22px;
+    text-align: center;
+}
+
+#musicVideoBackground {
+    position: absolute;
+    width: 74vw;
+    height: 85%;
+    z-index: 2;
+}
+
+.horizontal{
+    position: relative;
+    background-color: #F4F2DE;
+    border-radius: 10px;
+    width: 24%;
+    height: 100%;
+    float: right;
+    padding-left: 0.8vw;
+    overflow: auto;
+	z-index: 200;
+}
+
+.horizontal::-webkit-scrollbar{
+    display: none;
+}
+
+/* プルダウンの親要素のスタイル設定 */
+.selectBox {
+    position: relative;
+	width: 90%;
+	margin: 2em auto;
+	text-align: center;
+}
+
+/* プルダウンメニューのスタイル設定 */
+.selBox {
+    position: relative;
+	font-family: inherit;
+	background-color: transparent;
+	width: 100%;
+    margin-top: 15px;
+	padding: 15px 10px 10px 0;
+	font-size: 20px;
+	border-radius: 0;
+	border: none;
+	border-bottom: 1px solid rgba(0,0,0, 0.3);
+}
+
+.selBox:focus {
+	outline: none;
+	border-bottom: 1px solid rgba(255, 0, 0, 0);
+}
+
+/* select 要素のスタイル設定 */
+.selectBox .selBox {
+	appearance: none;
+	-webkit-appearance:none
+}
+
+.selectBox select::-ms-expand {
+	display: none;
+}
+
+/* プルダウンメニューの▼のスタイル設定 */
+.selectBox:after {
+	position: absolute;
+	bottom: 18px;
+	right: 10px;
+	width: 0;
+	height: 0;
+	padding: 0;
+    margin-bottom:15px;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid rgba(0, 0, 0, 0.3);
+	pointer-events: none;
+}
+
+/* ラベルのスタイル設定 */
+.selectLabel {
+	color: rgba(0,0,0, 0.5);
+	font-size: 18px;
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	left: 0;
+	top: 10px;
+	transition: 0.2s ease all;
+    margin-bottom: 10px;
+}
+
+.selBox:focus ~ .selectLabel, .selBox:valid ~ .selectLabel {
+	color: #E9B384;
+	top: -20px;
+	transition: 0.2s ease all;
+	font-size: 20px
+}
+
+/* ボトムラインのアニメーションスタイル設定 */
+.selectBar {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+
+.selectBar:before, .selectBar:after {
+	content: '';
+    margin-bottom: 15px;
+	height: 2px;
+	width: 0;
+	bottom: 1px;
+	position: absolute;
+	background: #E9B384;
+	transition: 0.2s ease all;
+}
+
+.selectBar:before {
+	left: 50%;
+}
+
+.selectBar:after {
+	right: 50%;
+}
+
+.selBox:focus ~ .selectBar:before, .selBox:focus ~ .selectBar:after {
+	width: 50%;
+}
+
+/* ボックスのハイライトのスタイル設定 */
+.selectHighlight {
+	position: absolute;
+	top: 25%;
+	left: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+.selectLabel {
+    width: 80%;
+	margin-right: 50%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font:1rem 'Fira Sans',sans-serif;
+    border-bottom: 5px solid #E9B384;
+    color: #7C9D96;
+}
+
+input {
+    margin: 1rem;
+}
+
+#color-picker,#background-color-picker{
+	margin-top: 20px;
+}
+
+#colorText,#backGroundText{
+	margin: 1rem;
+	padding-left: 10%;
+	padding-right: 10%;
+	font-family: inherit;
+	font-size: 20px;
+    border-bottom: 5px solid #E9B384;
+    color: #7C9D96;
+    text-align: center;
+}
+
+#selectTime{
+	margin-top: 30px;
+}
+
+.musicMenu {
+    display: flex; /* フレックスボックスを使用して要素を横並びに */
+    align-items: center; /* 垂直方向の中央に揃える */
+    justify-content: space-between; /* 子要素間のスペースを均等に */
+}
+
+.musicMenu > div {
+    width: 100%;
+}
+
+.musicMenu , .musicMenu #songWriter {
+    margin-right: 10px; /* 必要に応じてマージンを調整 */
+}
+
+#words > label{
+    width: 60%;
+}
+
+select{
+    margin-bottom: 15px;
+    font-size: 100px;
+}
